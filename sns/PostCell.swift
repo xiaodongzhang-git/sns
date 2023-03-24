@@ -62,7 +62,7 @@ struct PostCell: View {
                 loadImage(name: post.images[0])
                     .resizable()
                     .scaledToFill()
-                    .frame(width: UIScreen.main.bounds.width - 30, height: (UIScreen.main.bounds.width - 30) * 0.75)
+                    .frame(width: UIScreen.main.bounds.width - 45, height: (UIScreen.main.bounds.width - 45) * 0.75)
                 // .clipped 余分な部分を切り落と
                     .clipped()
             }
@@ -88,8 +88,14 @@ struct PostCell: View {
                 }
                 Spacer()
             }
+            Rectangle()
+                .padding(.horizontal, -15)
+                .frame(height: 10)
+                .foregroundColor(Color(red: 238/255, green: 238/255, blue: 238/255))
         }
-        .padding(.horizontal, 15)
+        .padding(.horizontal, 30)
+        .padding(.top, 15)
+        
     }
 }
 

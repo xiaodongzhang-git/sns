@@ -8,12 +8,13 @@
 import SwiftUI
 
 // `Codable` is a type alias for the `Encodable` and `Decodable` protocols.
+// var id: Self.ID { get }
 struct PostList: Codable {
     var list: [Post]
 }
 
 // data model
-struct Post: Codable {
+struct Post: Codable, Identifiable {
     // Property
     let id: Int
     let avatar: String
