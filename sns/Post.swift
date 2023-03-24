@@ -29,6 +29,25 @@ struct Post: Codable {
     var isLiked: Bool
 }
 
+// いくつかの追加機能を拡張する
+extension Post {
+    var loadAvatarImage:Image {
+        return Image(uiImage: UIImage(named: avatar)!)
+    }
+    
+    var getCommentCountText: String {
+        if commentCount <= 0 { return "comment" }
+        if commentCount < 1000 { return "\(commentCount)" }
+        return String(format: "%.1fK", Double(commentCount) / 1000)
+    }
+    
+    var getLikeCountText: String {
+        if likeCount <= 0 { return "like" }
+        if likeCount < 1000 { return "\(likeCount)" }
+        return String(format: "%.1fK", Double(likeCount) / 1000)
+    }
+}
+
 let postList = loadPostListData("PostListData_recommend_1.json")
 
 func loadPostListData(_ fileName: String ) -> PostList {
@@ -44,4 +63,8 @@ func loadPostListData(_ fileName: String ) -> PostList {
     }
     
     return list
+}
+
+func loadImage(name: String) -> Image {
+    return Image(uiImage: UIImage(named: name)!)
 }
