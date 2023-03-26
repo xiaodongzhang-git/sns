@@ -25,6 +25,7 @@ struct PostCellToolbarButton: View {
             }
         }
         .foregroundColor(color)
+        .buttonStyle(BorderlessButtonStyle())
     }
 }
 

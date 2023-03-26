@@ -11,13 +11,22 @@ struct PostListView: View {
     // デフォルトの分割線を削除
     init() {
         UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().selectionStyle = .none
     }
     
     var body: some View {
         List {
             ForEach(postList.list) { post in
-                PostCell(post: post)
-                    .listRowInsets(EdgeInsets())
+                // ZStack:縦画面配置
+                ZStack {
+                    PostCell(post: post)
+                    // NavigationLink： 対象ページ
+                    NavigationLink(destination: Text("Detail")) {
+                        EmptyView()
+                    }
+                    .hidden()
+                }
+                .listRowInsets(EdgeInsets())
             }
         }
     }
@@ -25,6 +34,10 @@ struct PostListView: View {
 
 struct PostListView_Previews: PreviewProvider {
     static var previews: some View {
-        PostListView()
+        NavigationView {
+            PostListView()
+                .navigationBarTitle("Title")
+                .navigationBarHidden(true)
+        }
     }
 }

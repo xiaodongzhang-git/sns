@@ -12,7 +12,7 @@ struct PostVIPBadge: View {
     
     var body: some View {
         Group {
-            if(vip) {
+            if vip {
                 Text("V")
                     .bold()
                     .font(.system(size: 11))

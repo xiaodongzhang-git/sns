@@ -37,7 +37,7 @@ struct PostCell: View {
                 }
                 .padding(.leading, 10)
                 
-                if (!post.isFollowed) {
+                if !post.isFollowed {
                     Spacer()
                     
                     Button(action: {
@@ -52,19 +52,15 @@ struct PostCell: View {
                                     .stroke(Color.orange, lineWidth: 1)
                             )
                     }
+                    .buttonStyle(BorderlessButtonStyle())
                 }
             }
             
             Text(post.text)
                 .font(.system(size: 14))
             
-            if (!post.images.isEmpty){
-                loadImage(name: post.images[0])
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: UIScreen.main.bounds.width - 45, height: (UIScreen.main.bounds.width - 45) * 0.75)
-                // .clipped 余分な部分を切り落と
-                    .clipped()
+            if !post.images.isEmpty {
+                PostImageCell(images: post.images, width: UIScreen.main.bounds.width - 45)
             }
             Divider()
             
