@@ -17,11 +17,6 @@ struct PostListView: View {
     var body: some View {
         List {
             ForEach(postList.list) { post in
-//                NavigationLink(destination: PostDetailView(post: post)) {
-//                    PostCell(post: post)
-//                }
-//                .listRowInsets(EdgeInsets())
-                // ZStack:縦画面配置
                 ZStack {
                     PostCell(post: post)
                     // NavigationLink： 対象ページ
